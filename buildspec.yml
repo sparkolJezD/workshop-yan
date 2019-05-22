@@ -4,9 +4,16 @@ phases:
   install:
     runtime-versions:
       nodejs: 8
-  build:
-    commands:
+  
+  dev:
+    commands: 
       - npm install
-      - npm run test
-      - npm run sls -- deploy -s $STAGE -r $REGION
-      - npm run acceptance
+    IntegrationTest:
+      commands: 
+        - npm run test
+    Deploy:
+      commands: 
+        - npm run sls -- deploy -s $STAGE -r $REGION
+    AcceptanceTest:
+      commands:
+        - npm run acceptance
