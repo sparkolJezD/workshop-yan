@@ -80,17 +80,17 @@ functions:
   
   notify-restaurant:
     handler: src/handlers/notify-restaurant.handler
-      events:
-        - stream:
-            type: kinesis
-            arn: 
-              Fn::GetAtt:
-                - orderEventsStream
-                - Arn
-      environment:
-        order_events_stream: ${self:service}/${opt:stage, self:provider.stage}/stream_name}
-        restaurant_notification_topic: 
-          Ref: restaurantNotificationTopic
+    events:
+      - stream:
+          type: kinesis
+          arn: 
+            Fn::GetAtt:
+              - orderEventsStream
+              - Arn
+    environment:
+      order_events_stream: ${self:service}/${opt:stage, self:provider.stage}/stream_name}
+      restaurant_notification_topic: 
+        Ref: restaurantNotificationTopic
 
   restaurants:
     handler: src/handlers/get-restaurants.handler
