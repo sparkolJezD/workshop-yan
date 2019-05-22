@@ -3,7 +3,7 @@ service: hello-world-jezd
 
 provider:
   name: aws
-  runtime: nodejs8.10
+  runtime: nodejs8
   stage: dev
   region: us-east-1
   iamRoleStatements:
